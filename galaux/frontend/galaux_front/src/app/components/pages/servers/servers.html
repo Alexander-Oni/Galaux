@@ -1,1 +1,66 @@
-<p>servers works!</p>
+<div class="servers-container">
+
+  <!-- Левая панель: Фильтры -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>Фильтры</h2>
+      <div class="search-box-wrapper">
+        <div class="search-box">
+          <input pInputText type="text" placeholder="Поиск"  class="search-input" />
+          <i class="pi pi-search search-icon"></i>
+        </div>
+      </div>
+
+      <!-- Список текстовых фильтров -->
+      <div class="filters-list">
+        <button *ngFor="let filter of filters" class="filter-chip">
+          {{ filter.toUpperCase() }} <!-- или просто текст -->
+        </button>
+      </div>
+
+      <!-- Кнопка "Искать" -->
+      <button pButton label="Искать" icon="pi pi-search" class="p-button-rounded find-btn"></button>
+    </div>
+  </aside>
+
+  <!-- Правая часть: Сетка серверов -->
+  <main class="servers-grid">
+    <div class="server-card" *ngFor="let server of servers">
+
+      <!-- Изображение -->
+      <div class="card-image-wrapper">
+        <img [src]="server.image" alt="Server Image" class="card-image" />
+      </div>
+
+      <!-- Контент -->
+      <div class="card-content">
+        <h3 class="server-title">название</h3>
+        <p class="server-desc">Привет, это тестовый текст</p>
+
+        <!-- Теги -->
+        <div class="tags-row">
+          <span class="tag">⚓ Мини-игры</span>
+          <span class="tag"> Инклюзивный</span>
+        </div>
+
+        <!-- Онлайн -->
+        <div class="online-stats">
+          <div class="dot-green"></div>
+          <span>{{ server.players.current }}/{{ server.players.max }} человек онлайн</span>
+        </div>
+
+        <!-- Рейтинг -->
+        <div class="rating-row">
+          <i class="pi pi-star-fill" *ngFor="let star of [1,2,3,4,5]"></i>
+        </div>
+
+        <!-- Кнопка Играть -->
+        <button class="play-btn">
+          <i class="pi pi-play"></i> ИГРАТЬ
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+</div>

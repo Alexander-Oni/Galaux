@@ -1,0 +1,255 @@
+.servers-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+font-family: 'Segoe UI', sans-serif;
+}
+
+
+
+.sidebar {
+  width: 280px;
+  background: #fff;
+  padding: 20px;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .sidebar-header {
+    h2 {
+      margin-top: 0;
+      color: #3b82f6;
+    font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+  }
+
+
+
+.search-box-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+
+  .search-box {
+    position: relative;
+    width: 100%;
+
+    .search-input {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid #8b5cf6;
+    padding-right: 40px;
+      height: 42px;
+
+      &:focus {
+        box-shadow: 0 0 0 2px #a78bfa;
+      }
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #8b5cf6;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+
+
+.filters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  .filter-chip {
+    background: transparent;
+    border: 1px solid #8b5cf6;
+    color: #8b5cf6;
+    border-radius: 10px;
+    padding: 8px 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+
+  &:hover {
+    background: #8b5cf6;
+    color: white;
+  }
+  }
+}
+
+
+
+.find-btn {
+  background-color: #3b82f6;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+
+  &:hover {
+    background-color: #2563eb;
+  }
+}
+}
+
+
+
+.servers-grid {
+  flex: 1;
+  padding: 20px;
+  display: grid;
+grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  align-content: start;
+}
+
+
+
+.server-card {
+  background-color: #3b82f6;
+border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-image-wrapper {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+
+  .server-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+    .server-desc {
+      margin: 0;
+      font-size: 0.9rem;
+      text-align: center;
+      line-height: 1.3;
+      opacity: 0.9;
+    }
+
+
+  .tags-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    .tag {
+      font-size: 0.75rem;
+      background: rgba(255,255,255, 0.2);
+      padding: 4px 8px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+
+
+  .online-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    background: rgba(255,255,255, 0.15);
+    padding: 6px;
+    border-radius: 20px;
+
+    .dot-green {
+      width: 10px;
+      height: 10px;
+      background-color: #4ade80;
+      border-radius: 50%;
+      box-shadow: 0 0 5px #4ade80;
+    }
+  }
+
+
+  .rating-row {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+
+    i {
+      color: #fbbf24;
+    font-size: 1.1rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+  }
+
+
+  .play-btn {
+    margin-top: auto;
+  background: white;
+    color: #3b82f6;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #f0f9ff;
+    }
+  }
+  }
+}
+
+@media (max-width: 768px) {
+  .servers-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .filters-list {
+    flex-direction: row;
+  overflow-x: auto;
+    padding-bottom: 10px;
+  }
+}

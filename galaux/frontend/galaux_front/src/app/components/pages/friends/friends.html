@@ -1,1 +1,70 @@
-<p>friends works!</p>
+<div class="bg-white dark:bg-surface-800 p-4 border-round shadow-2">
+  <!-- Заголовок -->
+  <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center mb-4">
+    <h2 class="text-xl font-bold m-0">Список друзей</h2>
+    <p-button label="Добавить друга" icon="pi pi-plus" styleClass="p-button-rounded mt-3 md:mt-0" />
+  </div>
+
+  <!-- Таблица -->
+  <p-table
+    [value]="friends"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Показано {first}-{last} из {totalRecords}"
+    [rowsPerPageOptions]="[5, 10, 15]"
+    selectionMode="multiple"
+    [(selection)]="selectedFriends"
+    styleClass="p-datatable-gridlines">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem"></th>
+        <th>Пользователь</th>
+        <th>Статус</th>
+        <th style="width: 12rem">Действия</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-friend>
+      <tr>
+        <td><p-tableCheckbox [value]="friend"></p-tableCheckbox></td>
+        <td>
+          <div class="flex align-items-center gap-3">
+            <p-avatar [image]="friend.avatar" shape="circle" size="large"></p-avatar>
+            <span class="font-medium">{{ friend.name }}</span>
+          </div>
+        </td>
+        <td>
+          <div class="flex align-items-center gap-2">
+            <span class="w-1rem h-1rem border-round" [ngClass]="getStatusClass(friend.status)"></span>
+            <span>
+              {{ getStatusText(friend.status) }}
+              @if (friend.lastSeen) {
+                <span class="text-color-secondary ml-1">({{ friend.lastSeen }})</span>
+              }
+            </span>
+          </div>
+        </td>
+        <td>
+          <div class="flex gap-2">
+            <p-button
+              icon="pi pi-envelope"
+              styleClass="p-button-rounded p-button-info"
+              (onClick)="sendMessage(friend)"
+              pTooltip="Написать"
+              tooltipPosition="top" />
+            <p-button
+              icon="pi pi-trash"
+              styleClass="p-button-rounded p-button-danger"
+              (onClick)="removeFriend(friend)"
+              pTooltip="Удалить"
+              tooltipPosition="top" />
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-toast />
